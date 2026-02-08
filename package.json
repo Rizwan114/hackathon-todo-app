@@ -1,7 +1,0 @@
-{
-  "name": "hackathon-todo-app",
-  "private": true,
-  "engines": {
-    "node": ">=18"
-  }
-}
