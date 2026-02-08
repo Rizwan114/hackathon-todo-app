@@ -65,8 +65,10 @@ function getAuthSnapshot() {
   return authSnapshot;
 }
 
+const SERVER_SNAPSHOT: AuthState = { userId: null, isAuthenticated: false, isLoading: true };
+
 function getAuthServerSnapshot(): AuthState {
-  return { userId: null, isAuthenticated: false, isLoading: true };
+  return SERVER_SNAPSHOT;
 }
 
 // Initialize snapshot on client
