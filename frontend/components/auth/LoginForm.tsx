@@ -6,7 +6,7 @@ import { useAuth } from "@/lib/auth/auth-context";
 import { authService } from "@/lib/auth/auth-service";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
-import { Card, CardContent, CardHeader } from "@/components/ui/Card";
+import { Card, CardContent } from "@/components/ui/Card";
 import Link from "next/link";
 
 export function LoginForm() {
