@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c:*)",
+      "Bash(python:*)",
+      "Bash(npm install axios @radix-ui/react-checkbox lucide-react)",
+      "Bash(npm install axios @radix-ui/react-checkbox lucide-react --legacy-peer-deps)",
+      "Bash(find:*)"
+    ]
+  }
+}
