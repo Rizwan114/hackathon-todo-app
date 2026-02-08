@@ -34,8 +34,21 @@ app.add_middleware(
 app.include_router(auth_routes.router, prefix="/auth", tags=["auth"])
 app.include_router(task_routes.router, prefix="/api", tags=["tasks"])
 
-# Add error handlers
-app.add_exception_handler(FastAPIHTTPException, unauthorized_exception_handler)
+# Add custom exception handler that preserves original status codes
+def custom_http_exception_handler(request, exc):
+    """Route HTTP exceptions to appropriate handlers based on status code"""
+    if exc.status_code == 401:
+        return unauthorized_exception_handler(request, exc)
+    if exc.status_code == 403:
+        return forbidden_exception_handler(request, exc)
+    # For all other status codes, return standard JSON response
+    from fastapi.responses import JSONResponse
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={"detail": exc.detail}
+    )
+
+app.add_exception_handler(FastAPIHTTPException, custom_http_exception_handler)
 
 @app.get("/")
 def read_root():
